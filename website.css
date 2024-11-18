@@ -65,6 +65,10 @@ p {
     margin-bottom: 30px;
 }
 
+.social-icons a {
+    margin: 0 20px;
+}
+
 .social-icons img {
     transition: transform 0.3s ease;
     width: 50px;
