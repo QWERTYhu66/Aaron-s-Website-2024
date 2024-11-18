@@ -44,3 +44,27 @@ button {
 button:hover {
     background-color: #777;
 }
+
+a.button {
+    display: inline-block;
+    background-color: white;
+    color: black;
+    padding: 7.5px 15px;
+    font-size: 1.5em;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid #000;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a.button:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+a.button:active {
+    transform: scale(0.98);
+}
