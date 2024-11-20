@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Animate sections on scroll
     gsap.from("#section1 h1", {
         opacity: 0,
         y: -50,
@@ -35,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
         stagger: 0.2,
     });
 
-    // Parallax effect for background elements
     gsap.to(".parallax-bg", {
         scrollTrigger: {
             trigger: ".parallax-bg",
@@ -43,11 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
             end: "bottom top",
             scrub: true,
         },
-        yPercent: -50, // Move background slower than foreground
+        yPercent: -50,
         ease: "none"
     });
 
-    // Adding fade-in and scaling effect for additional sections
     gsap.from("#section4 h2, #section4 p", {
         scrollTrigger: {
             trigger: "#section4",
@@ -56,12 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
             scrub: true,
         },
         opacity: 0,
-        scale: 0.9, // Slight scaling effect
+        scale: 0.9,
         duration: 1.5,
         stagger: 0.2,
     });
 
-    // Interactive button animation
     gsap.from(".button", {
         scrollTrigger: {
             trigger: ".button",
