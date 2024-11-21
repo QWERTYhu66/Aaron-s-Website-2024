@@ -149,10 +149,10 @@ async function roomOfEyes() {
 
 async function tickingClockRoom() {
     await slowPrint("You enter a room with a ticking clock. A pedestal stands in the center with a puzzle:");
-    await slowPrint("'Enter the numbers to form the first 10 digits of pi. (No decimal)'");
+    await slowPrint("'Enter the numbers to form the first 10 digits of pi. (No decimal and DO NOT round)'");
     const userInput = await getUserInput();
 
-    if (userInput === "3141") {
+    if (userInput === "3141592653") {
         await slowPrint("The clock stops. A passage opens ahead.");
         await endGame();
     } else {
@@ -174,7 +174,7 @@ async function rngDeath(callback, successMessage = null) {
 async function gameOver() {
     const chance = Math.random();
     if (chance < 0.01) {
-        await slowPrint("\nThe Labyrinth doesn't just claim you - it breaks you. Time fractures as your screams echo endlessly. You become a part of its malevolent essence, trapped in eternal torment, your very existence twisted into a haunting reminder for the next lost soul. Your very essence is torn apart, fiber by fiber, as the Labyrinth consumes not just your body but your memories and will. Screams that sound like your own echo in the distance, but you can't remember why. You exist everywhere and nowhere, a shattered soul drifting through infinite torment. The walls around you pulsate with your pain, feeding off your suffering as you fade into an eternal nightmare - a twisted echo of the person you once were.");
+        await slowPrint("\nHehe.\nThe Labyrinth doesn't just claim you - it breaks you. Time fractures as your screams echo endlessly. You become a part of its malevolent essence, trapped in eternal torment, your very existence twisted into a haunting reminder for the next lost soul. Your very essence is torn apart, fiber by fiber, as the Labyrinth consumes not just your body but your memories and will. Screams that sound like your own echo in the distance, but you can't remember why. You exist everywhere and nowhere, a shattered soul drifting through infinite torment. The walls around you pulsate with your pain, feeding off your suffering as you fade into an eternal nightmare - a twisted echo of the person you once were.");
     } else {
         await slowPrint("\nThe air turns frigid, and your breath fails as unseen hands drag you into the abyss. A cacophony of whispers erupts around you, mocking your feeble struggle. The darkness devours your body, mind, and soul. You are lost - forever.");
     }
