@@ -42,6 +42,10 @@ body, html {
     background: linear-gradient(135deg, #1b5e20, #004d23);
 }
 
+#section5 {
+    background: linear-gradient(135deg, #fbabb5, #ce7570);
+}
+
 h1, h2 {
     font-size: 4.5em;
     text-align: center;

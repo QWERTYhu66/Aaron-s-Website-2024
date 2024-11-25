@@ -1,3 +1,5 @@
+let n = 0;
+
 let gameState = {
     inputEnabled: false,
 };
@@ -65,6 +67,10 @@ function getUserInput() {
     });
 }
 
+function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function startGame() {
     disableInputBox();
     document.getElementById("start-button").style.display = "none";
@@ -82,10 +88,68 @@ async function askUserChoice() {
         await openDoor();
     } else if (userInput === "3") {
         await waitAndListen();
+    } else if (userInput === "god" &&  n === 1) {
+        await slowPrint("...")
+        await slowPrint("But you can't go back there.")
+        await askUserChoice();
+    } else if (userInput === "god") {
+        await godMode();
     } else {
         await slowPrint("Invalid choice. Please choose 1, 2, or 3.");
         await askUserChoice();
     }
+}
+
+async function godMode() {
+    await slowPrint("G O D M O D E")
+
+    await slowPrint("You awaken in a space with no dimensions. There is no up, no down, only endless darkness.");
+
+    await slowPrint("Your thoughts echo loudly, but not in your voice. Something is listening.");
+
+    await slowPrint(`A voice invades your mind, sharp and cold: "So fragile. So lost. Do you think you matter here?"`);
+
+    let input = "";
+    while (input.toLowerCase() !== "leave") {
+        await slowPrint("What will you do? (Type 'continue')");
+
+        input = (await getUserInput()).trim();
+
+        if (input.toLowerCase() === "continue") {
+            await slowPrint("You step forward - or perhaps backward. You cannot tell.");
+
+            await slowPrint("Each step feels heavier than the last, as though something unseen wraps around your ankles, dragging you closer to an unknown fate.");
+
+            await slowPrint(`The voice grows louder: "Do you understand? Every step binds you. Every breath feeds me."`);
+
+            await slowPrint("The air around you grows thick, cloying. You can no longer see, but you can feel a presence looming.");
+        } else {
+            await slowPrint(`"Ah... resistance," the voice sneers. "Do you think there is another way? There is only 'continue.' There is only ME."`);
+        }
+    }
+
+    await slowPrint("You finally whisper, 'leave,' your voice trembling.");
+
+    await slowPrint(`The voice laughs, deep and guttural, shaking the very core of your existence. "Leave? Oh, mortal. There is no escape."`);
+
+    await slowPrint("The ground beneath you crumbles, revealing an abyss filled with writhing shadows. They call your name, over and over, in mockery.");
+
+    await slowPrint("You fall, endlessly. The shadows rise around you, clawing at your form, tearing away memories, dreams, and hope itself.");
+
+    await slowPrint(`"This is your eternity now," the voice bellows. "You are mine - forever."`);
+
+    await slowPrint("You try to scream, but the void swallows your voice. The last of your thoughts dissolve, leaving nothing but silence.");
+
+    await slowPrint("...You are no more.");
+
+    await slowPrint("GAME OVER");
+
+    await wait(20000);
+
+    await slowPrint(`The voice chuckles. "I will give you another chance."`)
+
+    n = 1;
+    await startGame();
 }
 
 async function inspectRoom() {
