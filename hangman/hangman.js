@@ -10,7 +10,7 @@ async function loadWords() {
         return words;
     } catch (error) {
         console.error("Error loading words:", error.message);
-        return ["hangman", "javascript", "python", "coding"]; // Default fallback words
+        return ["hangman", "javascript", "python", "coding"];
     }
 }
 
@@ -20,7 +20,7 @@ function getGuess() {
         alert("Please enter a single lowercase letter.");
         return null;
     }
-    document.getElementById("guess").value = ""; // Clear input field
+    document.getElementById("guess").value = "";
     return guess;
 }
 
@@ -32,14 +32,14 @@ function updateDashes(secretWord, dashes, guess) {
 }
 
 const hangmanStages = [
-    "+------+", 
-    "+------+<br>|      |", 
-    "+------+<br>|      |<br>|      O", 
-    "+------+<br>|      |<br>|      O<br>|    --+--", 
-    "+------+<br>|      |<br>|      O<br>|    --+--<br>|      |", 
-    "+------+<br>|      |<br>|      O<br>|    --+--<br>|      |<br>|     / \\", 
-    "+------+<br>|      |<br>|      O<br>|    --+--<br>|      |<br>|     / \\<br>|    /   \\", 
-    "+------+<br>|      |<br>|      O<br>|    --+--<br>|      |<br>|     / \\<br>|    /   \\<br>|", 
+    "+------+",
+    "+------+<br>|      |",
+    "+------+<br>|      |<br>|      O",
+    "+------+<br>|      |<br>|      O<br>|    --+--",
+    "+------+<br>|      |<br>|      O<br>|    --+--<br>|      |",
+    "+------+<br>|      |<br>|      O<br>|    --+--<br>|      |<br>|     / \\",
+    "+------+<br>|      |<br>|      O<br>|    --+--<br>|      |<br>|     / \\<br>|    /   \\",
+    "+------+<br>|      |<br>|      O<br>|    --+--<br>|      |<br>|     / \\<br>|    /   \\<br>|",
     "+------+<br>|      |<br>|      O<br>|    --+--<br>|      |<br>|     / \\<br>|    /   \\<br>|<br>+----------------"
 ];
 
@@ -53,12 +53,14 @@ async function startGame() {
     const hangmanDisplay = document.getElementById("hangman");
     const wordDisplay = document.getElementById("word");
     const messageDisplay = document.getElementById("message");
+    const guessInput = document.getElementById("guess");
+    const submitButton = document.getElementById("submit-guess");
 
     hangmanDisplay.innerHTML = hangmanStages[0];
     wordDisplay.textContent = dashes;
     messageDisplay.textContent = "Start guessing!";
 
-    document.getElementById("submit-guess").addEventListener("click", function handleGuess() {
+    function handleGuess() {
         const guess = getGuess();
         if (!guess) return;
 
@@ -74,12 +76,26 @@ async function startGame() {
 
         if (dashes === secretWord) {
             messageDisplay.textContent = `You win! The word was "${secretWord}".`;
-            this.removeEventListener("click", handleGuess);
+            cleanup();
         } else if (guessesLeft === 0) {
             messageDisplay.textContent = `Game Over! The word was "${secretWord}".`;
-            this.removeEventListener("click", handleGuess);
+            cleanup();
         }
-    });
+    }
+
+    function cleanup() {
+        submitButton.removeEventListener("click", handleGuess);
+        document.removeEventListener("keydown", handleEnter);
+    }
+
+    function handleEnter(event) {
+        if (event.key === "Enter") {
+            handleGuess();
+        }
+    }
+
+    submitButton.addEventListener("click", handleGuess);
+    document.addEventListener("keydown", handleEnter);
 }
 
 startGame();
