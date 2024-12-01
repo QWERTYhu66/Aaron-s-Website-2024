@@ -66,18 +66,31 @@ input[type="text"]:focus {
 }
 
 button {
-    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    padding: 12px 24px;
     font-size: 1em;
+    font-weight: bold;
     background-color: #007bff;
     color: white;
-    border: none;
-    border-radius: 4px;
+    border: 2px solid #007bff;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    margin: 10px 5px;
 }
 
 button:hover {
     background-color: #0056b3;
+    border-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: scale(0.95);
+    background-color: #004085;
+    border-color: #004085;
 }
 
 #result {
@@ -93,16 +106,28 @@ button:hover {
 
 a.button {
     text-decoration: none;
-    padding: 10px 20px;
+    display: inline-block;
+    padding: 12px 24px;
     font-size: 1em;
+    font-weight: bold;
     background-color: #007bff;
     color: white;
-    border: none;
-    border-radius: 4px;
+    border: 2px solid #007bff;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    margin: 10px 5px;
 }
 
 a.button:hover {
     background-color: #0056b3;
+    border-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+a.button:active {
+    transform: scale(0.95);
+    background-color: #004085;
+    border-color: #004085;
 }
