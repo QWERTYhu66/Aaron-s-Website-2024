@@ -242,8 +242,23 @@ async function gameOver() {
     } else {
         await slowPrint("\nThe air turns frigid, and your breath fails as unseen hands drag you into the abyss. A cacophony of whispers erupts around you, mocking your feeble struggle. The darkness devours your body, mind, and soul. You are lost - forever.");
     }
+    await slowPrint("Would you like to replay? (yes/no)")
+    const userInput = getUserInput();
+    await slowPrint("You don't have a choice. The Labyrinth revives you.")
+    startGame();
 }
 
 async function endGame() {
     await slowPrint("\nYou survived... for now. The Labyrinth shifts around you, preparing its next trap.");
+    await slowPrint("Would you like to replay? (yes/no)");
+    const userInput = (await getUserInput()).toLowerCase();
+    if (userInput === "yes") {
+        await slowPrint("Good luck.");
+        await startGame();
+    } else if (userInput === "no") {
+        await slowPrint("Goodbye.");
+    } else {
+        await slowPrint(`Please pick "yes" or "no".`);
+        await endGame();
+    }
 }
