@@ -29,7 +29,7 @@ A classic hangman game implementation.
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 .
@@ -49,6 +49,7 @@ A classic hangman game implementation.
 ```
 
 ---
+
 ## Notes
 This project was created in 2024 as part of a school assignment.  
 Code may be simple or experimental in nature.
